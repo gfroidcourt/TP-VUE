@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - '127.0.0.1:${API_PORT}:3000'
+    environment:
+      TZ: Europe/Paris
+      API_PORT: '${API_PORT}'
+    volumes:
+      - ./database:/app/database
