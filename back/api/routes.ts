@@ -8,7 +8,11 @@ export const prisma = new PrismaClient();
  * Returns all the movies from the db
  */
 router.get('/movies', async (req: Request, res: Response) => {
-  const movies = await prisma.movies.findMany();
+  const movies = await prisma.movies.findMany({
+    include: {
+      producer: true,
+    }
+  });
   res.json(movies);
 });
 
@@ -21,6 +25,9 @@ router.get('/movies/:id', async (req: Request, res: Response) => {
     where: {
       id: Number(id),
     },
+    include: {
+      producer: true,
+    }
   });
   res.json(movie);
 });
@@ -78,7 +85,7 @@ router.post('/producers', async (req: Request, res: Response) => {
 
 router.put('/movies/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { title, synopsis, releaseDate, genre, producer, } = req.body;
+  const { title, synopsis, releaseDate, genre, producerId } = req.body;
   const movie = await prisma.movies.update({
     where: {
       id: Number(id),
@@ -88,7 +95,7 @@ router.put('/movies/:id', async (req: Request, res: Response) => {
       releaseDate,
       synopsis,
       genre,
-      producer,
+      producerId
     },
   });
   res.json(movie);

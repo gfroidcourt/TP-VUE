@@ -5,12 +5,11 @@
     </figure>
     <div class="card-body items-center text-center">
       <h2 class="card-title">{{ movie.title }} ({{ movie.releaseDate }})</h2>
-      <!-- <h3>
-        Réalisé par {{ movie.produceur.firstName }}
-        {{ movie.produceur.lastName }}, de nationalité
-        {{ movie.produceur.nationality }} et né le
-        {{ movie.produceur.birthdate }}.
-      </h3> -->
+      <h3>
+        Réalisé par {{ producer.firstName }} {{ producer.lastName }}, de
+        nationalité {{ producer.nationality }} et né le
+        {{ producer.birthDate }}.
+      </h3>
       <h3>
         <b>Genre du film: {{ movie.genre }}</b>
       </h3>
@@ -28,6 +27,7 @@ export default {
   name: "MovieItem",
   props: {
     movie: Object,
+    producer: Object,
   },
   methods: {
     edit() {
