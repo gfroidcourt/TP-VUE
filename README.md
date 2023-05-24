@@ -17,6 +17,7 @@ npm run dev
 
 ```bash
    cd back/
+   npm i
    node populate.ts
 ```
 
@@ -51,6 +52,5 @@ docker compose up
 
 ```bash
 cd back/
-npm i
 npm run start
 ```

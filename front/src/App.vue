@@ -1,82 +1,87 @@
 <template>
   <div class="mt-4 flex flex-col items-center">
-    <div
-      class="flex flex-col items-center justify-center border border-black rounded-r-md p-4"
-    >
-      <label for="title"> Titre du film </label>
-      <input
-        type="text"
-        name="title"
-        v-model="movie_to_add.title"
-        class="input w-full max-w-xs border border-black"
-      />
-      <label for="releaseDate"> Année de sortie </label>
-      <input
-        type="number"
-        name="releaseDate"
-        v-model="movie_to_add.releaseDate"
-        class="input w-full max-w-xs border border-black"
-      />
-      <label for="synopsis"> Synopsis </label>
-      <textarea
-        name="synopsis"
-        v-model="movie_to_add.synopsis"
-        class="input w-full max-w-xs border border-black"
-      ></textarea>
-      <label for="genre"> Genre </label>
-      <input
-        type="text"
-        name="genre"
-        v-model="movie_to_add.genre"
-        class="input w-full max-w-xs border border-black"
-      />
-      <label for="producer"> Producteur </label>
-      <select name="producer" class="input w-full max-w-xs border border-black">
-        <option value="" disabled selected>Choose a producer</option>
-        <option
-          v-for="(producer, index) in producers"
-          :key="index"
-          :value="producer.id"
+    <div class="flex flex-row gap-10">
+      <div
+        class="flex flex-col items-center justify-center border border-black rounded-r-md p-4"
+      >
+        <label for="title"> Titre du film </label>
+        <input
+          type="text"
+          name="title"
+          v-model="movie_to_add.title"
+          class="input w-full max-w-xs border border-black"
+        />
+        <label for="releaseDate"> Année de sortie </label>
+        <input
+          type="number"
+          name="releaseDate"
+          v-model="movie_to_add.releaseDate"
+          class="input w-full max-w-xs border border-black"
+        />
+        <label for="synopsis"> Synopsis </label>
+        <textarea
+          name="synopsis"
+          v-model="movie_to_add.synopsis"
+          class="input w-full max-w-xs border border-black"
+        ></textarea>
+        <label for="genre"> Genre </label>
+        <input
+          type="text"
+          name="genre"
+          v-model="movie_to_add.genre"
+          class="input w-full max-w-xs border border-black"
+        />
+        <label for="producer"> Producteur </label>
+        <select
+          name="producer"
+          class="input w-full max-w-xs border border-black"
         >
-          {{ producer.firstName }} {{ producer.lastName }}
-        </option>
-      </select>
-      <button @click="newMovie" class="btn mt-4">Add</button>
-    </div>
+          <option value="" disabled selected>Choose a producer</option>
+          <option
+            v-for="(producer, index) in producers"
+            :key="index"
+            :value="producer.id"
+          >
+            {{ producer.firstName }} {{ producer.lastName }}
+          </option>
+        </select>
+        <button @click="newMovie" class="btn mt-4">Add</button>
+      </div>
 
-    <!-- Same as above but for the producers -->
-    <div
-      class="flex flex-col items-center justify-center border border-black rounded-r-md p-4"
-    >
-      <label for="firstName">Nom du producteur:</label>
-      <input
-        type="text"
-        name="firstName"
-        v-model="producer_to_add.firstName"
-        class="input w-full max-w-xs border border-black"
-      />
-      <label for="lastName">Prénom du producteur:</label>
-      <input
-        type="text"
-        name="lastName"
-        v-model="producer_to_add.lastName"
-        class="input w-full max-w-xs border border-black"
-      />
-      <label for="nationality">Nationalité</label>
-      <input
-        type="text"
-        name="nationality"
-        v-model="producer_to_add.nationality"
-        class="input w-full max-w-xs border border-black"
-      />
-      <label for="birthDate">Date de naissance</label>
-      <input
-        type="number"
-        name="birthDate"
-        v-model="producer_to_add.birthDate"
-        class="input w-full max-w-xs border border-black"
-      />
-      <button @click="addProducer" class="btn mt-4">Add</button>
+      <!-- Same as above but for the producers -->
+      <div
+        class="flex flex-col items-center justify-center border border-black rounded-r-md p-4"
+      >
+        <label for="firstName">Nom du producteur:</label>
+        <input
+          type="text"
+          name="firstName"
+          v-model="producer_to_add.firstName"
+          class="input w-full max-w-xs border border-black"
+        />
+        <label for="lastName">Prénom du producteur:</label>
+        <input
+          type="text"
+          name="lastName"
+          v-model="producer_to_add.lastName"
+          class="input w-full max-w-xs border border-black"
+        />
+        <label for="nationality">Nationalité</label>
+        <input
+          type="text"
+          name="nationality"
+          v-model="producer_to_add.nationality"
+          class="input w-full max-w-xs border border-black"
+        />
+        <label for="birthDate">Date de naissance</label>
+        <input
+          type="number"
+          name="birthDate"
+          v-model="producer_to_add.birthDate"
+          class="input w-full max-w-xs border border-black"
+        />
+        <button @click="addProducer" class="btn mt-4">Add</button>
+      </div>
     </div>
     Search : <input type="text" v-model="search" />
 
